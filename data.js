@@ -19,7 +19,7 @@
 const CONFIG = {
   // رابط الموقع بعد النشر (يُستخدم في أكواد QR). اتركه فارغًا ليُستخدم
   // عنوان الصفحة الحالي تلقائيًا.
-  SITE_BASE_URL: "",
+  SITE_BASE_URL: "https://safwa-catalog.github.io/safwa-catalog/",
 
   // خطوة 3 (لاحقًا): رابط Google Apps Script Web App الذي سيجلب
   // البيانات من الشيت مباشرة ويسجل الطلبات في تبويب Orders.
