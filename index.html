@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>شركة الصفوة للصناعات الغذائية — كتالوج الماكينات</title>
+<meta name="description" content="كتالوج ماكينات التعبئة والتغليف — شركة الصفوة للصناعات الغذائية: ماكينات قفل أغطية، شرنك سليف، وخطوط شرنك حراري.">
+<meta name="theme-color" content="#14532d">
+<meta property="og:type" content="website">
+<meta property="og:title" content="شركة الصفوة للصناعات الغذائية — كتالوج الماكينات">
+<meta property="og:description" content="ماكينات تعبئة وتغليف: قفل أغطية أوتوماتيك، شرنك سليف، وخطوط شرنك حراري. اطلب عبر واتساب.">
+<meta property="og:image" content="og-image.png">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<header class="site-header">
+  <div class="header-inner">
+    <div class="brand">
+      <div class="brand-mark" aria-hidden="true">ص</div>
+      <div class="brand-text">
+        <h1 data-i18n="companyName">شركة الصفوة للصناعات الغذائية</h1>
+        <p data-i18n="tagline">ماكينات تعبئة وتغليف — جودة تصنع الثقة</p>
+      </div>
+    </div>
+    <div class="header-actions">
+      <button id="langToggle" class="btn btn-ghost" type="button">English</button>
+      <button id="cartButton" class="btn btn-cart" type="button">
+        <span data-i18n="cart">سلة الطلب</span>
+        <span id="cartCount" class="cart-badge" hidden>0</span>
+      </button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <section class="hero">
+    <h2 data-i18n="companyName">شركة الصفوة للصناعات الغذائية</h2>
+    <p data-i18n="tagline">ماكينات تعبئة وتغليف — جودة تصنع الثقة</p>
+    <div class="hero-actions">
+      <a class="btn btn-light" href="#machinesGrid" data-i18n="browse">تصفح الماكينات</a>
+      <a class="btn btn-accent" href="https://wa.me/201010780457" target="_blank" rel="noopener">واتساب <span dir="ltr">01010780457</span></a>
+    </div>
+  </section>
+
+  <section class="toolbar" aria-label="بحث وتصفية">
+    <div class="search-box">
+      <input id="searchInput" type="search" data-i18n-ph="searchPlaceholder" placeholder="ابحث عن ماكينة…">
+    </div>
+    <div id="categoryFilters" class="chips" role="group" aria-label="التصنيفات"></div>
+  </section>
+
+  <p id="catInfo" class="cat-info" hidden></p>
+
+  <p id="noResults" class="no-results" data-i18n="noResults" hidden>لا توجد نتائج مطابقة لبحثك.</p>
+
+  <section id="machinesGrid" class="grid" aria-live="polite"></section>
+
+  <section class="about-strip" aria-label="عن الشركة">
+    <h2 data-i18n="aboutTitle">عن شركة الصفوة</h2>
+    <p data-i18n="aboutText">شركة الصفوة للصناعات الغذائية متخصصة في ماكينات التعبئة والتغليف وخطوط الإنتاج. الكتالوج ده بيتحدث تلقائيًا — أي ماكينة جديدة بتنزل فيه فورًا — والأسعار عند الطلب، والتفاصيل الكاملة والطلب من خلال واتساب.</p>
+    <div class="stats-row">
+      <div class="stat-box"><span class="stat-num" id="statMachinesNum">٣</span><span data-i18n="statMachines">ماكينة في الكتالوج</span></div>
+      <div class="stat-box"><span class="stat-num" id="statCatsNum">٣</span><span data-i18n="statCats">قسم رئيسي</span></div>
+      <div class="stat-box"><span class="stat-num">واتساب</span><span data-i18n="statWa">طلب واستفسار واتساب</span></div>
+      <div class="stat-box"><span class="stat-num">مباشر</span><span data-i18n="statLive">تحديث تلقائي مباشر</span></div>
+    </div>
+  </section>
+
+  <section class="how-strip" aria-label="طريقة الطلب">
+    <h2 data-i18n="howTitle">إزاي تطلب؟</h2>
+    <div class="how-steps">
+      <div class="how-step"><span class="how-num">١</span><span data-i18n="how1">اختار الماكينة من الكتالوج</span></div>
+      <div class="how-step"><span class="how-num">٢</span><span data-i18n="how2">ضيفها لسلة الطلب</span></div>
+      <div class="how-step"><span class="how-num">٣</span><span data-i18n="how3">أكد الطلب وهنرد عليك على واتساب</span></div>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <p>
+    <span data-i18n="footerOrder">للطلب والاستفسار عبر واتساب:</span>
+    <a id="footerWhatsapp" href="https://wa.me/201010780457" target="_blank" rel="noopener"><span dir="ltr">01010780457</span></a>
+  </p>
+  <p class="footer-company" data-i18n="companyName">شركة الصفوة للصناعات الغذائية</p>
+  <nav class="footer-nav">
+    <a href="#machinesGrid" data-i18n="browse">تصفح الماكينات</a>
+    <a href="qr.html">طباعة أكواد QR للماكينات</a>
+  </nav>
+  <p class="footer-copy">© 2026 <span data-i18n="companyName">شركة الصفوة للصناعات الغذائية</span></p>
+</footer>
+
+<a class="wa-float" href="https://wa.me/201010780457" target="_blank" rel="noopener" aria-label="واتساب">
+  <svg viewBox="0 0 24 24" width="30" height="30" fill="#fff" aria-hidden="true"><path d="M12 2a10 10 0 0 0-8.6 15.1L2 22l5-1.3A10 10 0 1 0 12 2zm0 18.2c-1.6 0-3.1-.4-4.4-1.2l-.3-.2-3 .8.8-2.9-.2-.3A8.2 8.2 0 1 1 12 20.2zm4.6-6.1c-.3-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.6.1-.2.3-.6.8-.8 1-.1.2-.3.2-.5.1a6.7 6.7 0 0 1-3.3-2.9c-.3-.4 0-.5.2-.7l.5-.6c.1-.2.1-.4 0-.5l-.8-1.9c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.3-.9.9-.9 2.2s.9 2.5 1.1 2.7c.1.2 1.9 2.9 4.6 4 .6.3 1.1.4 1.5.6.6.2 1.2.2 1.6.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.1-1.2 0-.1-.2-.2-.5-.3z"/></svg>
+</a>
+
+<!-- ===== نافذة تفاصيل الماكينة ===== -->
+<div id="detailOverlay" class="overlay" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="detailName">
+    <button id="detailClose" class="modal-close" type="button" aria-label="×">×</button>
+    <div id="detailContent"></div>
+  </div>
+</div>
+
+<!-- ===== لوحة سلة الطلب ===== -->
+<div id="cartOverlay" class="overlay" hidden>
+  <div class="modal" role="dialog" aria-modal="true" aria-labelledby="cartTitle">
+    <button id="cartClose" class="modal-close" type="button" aria-label="×">×</button>
+    <h2 id="cartTitle" data-i18n="cartTitle">سلة الطلب</h2>
+    <div id="cartItems"></div>
+    <form id="checkoutForm" class="checkout-form">
+      <label>
+        <span data-i18n="fullName">الاسم بالكامل</span>
+        <input id="coName" type="text" required autocomplete="name">
+      </label>
+      <label>
+        <span data-i18n="phone">رقم الهاتف</span>
+        <input id="coPhone" type="tel" required autocomplete="tel">
+      </label>
+      <label>
+        <span data-i18n="notes">ملاحظات (اختياري)</span>
+        <textarea id="coNotes" rows="2"></textarea>
+      </label>
+      <button class="btn btn-primary btn-block" type="submit" data-i18n="confirmOrder">تأكيد الطلب</button>
+      <p class="confirm-note" data-i18n="confirmNote">عند تأكيد الطلب سيتم فتح واتساب لإرسال طلبك مباشرة إلى الشركة.</p>
+      <p id="orderDone" class="order-done" data-i18n="orderDone" hidden>تم تجهيز طلبك وفتحه في واتساب — شكرًا لتواصلك معنا.</p>
+    </form>
+  </div>
+</div>
+
+<script src="data.js"></script>
+<script src="qr.js"></script>
+<script src="app.js"></script>
+</body>
+</html>

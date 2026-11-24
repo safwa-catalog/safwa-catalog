@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>أكواد QR للماكينات — شركة الصفوة للصناعات الغذائية</title>
+<meta name="theme-color" content="#14532d">
+<style>
+  * { box-sizing: border-box; }
+  body { font-family: "Segoe UI", Tahoma, Arial, sans-serif; margin: 0; background: #f4f6f5; color: #1c2420; }
+  header { background: #14532d; color: #fff; padding: 18px 16px; text-align: center; }
+  header h1 { margin: 0 0 4px; font-size: 20px; }
+  header p { margin: 0; opacity: .9; font-size: 14px; }
+  .toolbar { text-align: center; padding: 14px; }
+  .toolbar button { background: #14532d; color: #fff; border: 0; border-radius: 10px; padding: 10px 22px; font-size: 15px; font-weight: 700; cursor: pointer; }
+  .toolbar a { color: #14532d; font-weight: 700; margin-inline-start: 14px; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr)); gap: 14px; padding: 0 16px 24px; max-width: 1000px; margin: 0 auto; }
+  .qr-card { background: #fff; border: 1.5px solid #14532d; border-radius: 14px; padding: 16px; text-align: center; }
+  .qr-card h2 { font-size: 16px; margin: 0 0 4px; line-height: 1.5; }
+  .qr-card .code { color: #d97706; font-weight: 800; letter-spacing: .5px; }
+  .qr-card .cap { color: #555; font-size: 13px; margin: 2px 0 8px; }
+  .qr-card svg { width: 170px; height: 170px; }
+  .qr-card .link { font-size: 11px; color: #666; direction: ltr; word-break: break-all; margin-top: 6px; }
+  .qr-card .co { margin-top: 8px; font-size: 12px; color: #14532d; font-weight: 700; }
+  @media print {
+    body { background: #fff; }
+    .toolbar { display: none; }
+    .grid { padding: 0; }
+    .qr-card { break-inside: avoid; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>شركة الصفوة للصناعات الغذائية</h1>
+  <p>أكواد QR للماكينات — اطبعها والصقها على الماكينة، والعميل يوصل لصفحتها بمسح الكود</p>
+</header>
+
+<div class="toolbar">
+  <button type="button" onclick="window.print()">طباعة الأكواد</button>
+  <a href="index.html">رجوع للكتالوج</a>
+</div>
+
+<main id="qrGrid" class="grid"></main>
+
+<script src="data.js"></script>
+<script src="qr.js"></script>
+<script>
+"use strict";
+function pageUrl(code) {
+  var base = CONFIG.SITE_BASE_URL ||
+    (location.href.split(/[?#]/)[0].replace(/qr\.html$/, "index.html"));
+  return base + "?m=" + encodeURIComponent(code);
+}
+function render(list) {
+  var grid = document.getElementById("qrGrid");
+  grid.innerHTML = "";
+  list.forEach(function (m) {
+    var url = pageUrl(m.code);
+    var card = document.createElement("article");
+    card.className = "qr-card";
+    card.innerHTML =
+      "<h2></h2>" +
+      '<div class="code"></div>' +
+      (m.capacity ? '<div class="cap"></div>' : "") +
+      (qrCodeSvg(url, 4) || "") +
+      '<div class="link"></div>' +
+      '<div class="co">شركة الصفوة للصناعات الغذائية</div>';
+    card.querySelector("h2").textContent = m.name;
+    card.querySelector(".code").textContent = m.code;
+    if (m.capacity) card.querySelector(".cap").textContent = "الطاقة الإنتاجية: " + m.capacity;
+    card.querySelector(".link").textContent = url;
+    grid.appendChild(card);
+  });
+}
+render(MACHINES);
+/* تحديث حي من الشيت — أي ماكينة جديدة تظهر هنا كمان */
+(function () {
+  if (!CONFIG.APPS_SCRIPT_URL) return;
+  var cb = "__safwaQr_" + Date.now();
+  window[cb] = function (payload) {
+    if (payload && payload.ok && Array.isArray(payload.machines) && payload.machines.length) {
+      render(payload.machines.map(function (r) {
+        var m = {};
+        ["code", "name", "capacity"].forEach(function (k) { m[k] = r[k] != null ? String(r[k]) : ""; });
+        return m;
+      }).filter(function (m) { return m.code; }));
+    }
+    try { delete window[cb]; } catch (e) {}
+  };
+  var s = document.createElement("script");
+  s.src = CONFIG.APPS_SCRIPT_URL + (CONFIG.APPS_SCRIPT_URL.indexOf("?") >= 0 ? "&" : "?") + "callback=" + cb;
+  document.head.appendChild(s);
+})();
+</script>
+</body>
+</html>
